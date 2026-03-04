@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula2\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|solutionrelative:aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula2\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula2\\alunoendereco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|solutionrelative:alunoendereco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula2\\alunopagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|solutionrelative:alunopagamento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula2\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EFCEEEE3-BE86-4B42-90F8-C7F66E915E15}|Aula2.csproj|solutionrelative:aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +30,42 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AlunoEndereco.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\AlunoEndereco.cs",
+              "RelativeDocumentMoniker": "AlunoEndereco.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\AlunoEndereco.cs",
+              "RelativeToolTip": "AlunoEndereco.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T01:13:06.086Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\Form1.cs",
+              "RelativeDocumentMoniker": "Form1.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\Form1.cs [Design]",
+              "RelativeToolTip": "Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-04T00:57:15.403Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAWwA0AAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-24T23:40:23.94Z",
               "EditorCaption": ""
@@ -49,14 +78,14 @@
               "RelativeDocumentMoniker": "AlunoPagamento.cs",
               "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\AlunoPagamento.cs",
               "RelativeToolTip": "AlunoPagamento.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAwBAAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAwA8AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-24T23:24:17.016Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "Aluno.cs",
               "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\Aluno.cs",
               "RelativeDocumentMoniker": "Aluno.cs",
@@ -66,18 +95,6 @@
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-24T23:12:59.678Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\Form1.cs",
-              "RelativeDocumentMoniker": "Form1.cs",
-              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula2\\Form1.cs [Design]",
-              "RelativeToolTip": "Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-24T23:02:43.019Z",
-              "EditorCaption": " [Design]"
             }
           ]
         }
