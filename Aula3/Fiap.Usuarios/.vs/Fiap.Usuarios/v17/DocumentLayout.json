@@ -1,0 +1,120 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula3\\fiap.usuarios\\fiap.usuarios\\telausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|solutionrelative:fiap.usuarios\\telausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula3\\fiap.usuarios\\fiap.usuarios\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|solutionrelative:fiap.usuarios\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula3\\fiap.usuarios\\fiap.usuarios\\telausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|solutionrelative:fiap.usuarios\\telausuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula3\\fiap.usuarios\\fiap.usuarios\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|solutionrelative:fiap.usuarios\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula3\\fiap.usuarios\\fiap.usuarios\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|solutionrelative:fiap.usuarios\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|c:\\users\\labsfiap\\desktop\\csharp\\aula3\\fiap.usuarios\\fiap.usuarios\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E256DC95-040B-41B6-9FAE-86BFED1C5D04}|Fiap.Usuarios\\Fiap.Usuarios.csproj|solutionrelative:fiap.usuarios\\aluno.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "TelaUsuario.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\TelaUsuario.cs",
+              "RelativeDocumentMoniker": "Fiap.Usuarios\\TelaUsuario.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\TelaUsuario.cs",
+              "RelativeToolTip": "Fiap.Usuarios\\TelaUsuario.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAIwBYAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T01:26:29.267Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Form1.cs",
+              "RelativeDocumentMoniker": "Fiap.Usuarios\\Form1.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Form1.cs",
+              "RelativeToolTip": "Fiap.Usuarios\\Form1.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T01:22:36.157Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TelaUsuario.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\TelaUsuario.cs",
+              "RelativeDocumentMoniker": "Fiap.Usuarios\\TelaUsuario.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\TelaUsuario.cs [Design]",
+              "RelativeToolTip": "Fiap.Usuarios\\TelaUsuario.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T01:18:23.888Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Aluno.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Aluno.cs",
+              "RelativeDocumentMoniker": "Fiap.Usuarios\\Aluno.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Aluno.cs",
+              "RelativeToolTip": "Fiap.Usuarios\\Aluno.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAgwBsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T00:56:09.466Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Usuario.cs",
+              "RelativeDocumentMoniker": "Fiap.Usuarios\\Usuario.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Usuario.cs",
+              "RelativeToolTip": "Fiap.Usuarios\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T00:49:56.899Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Form1.cs",
+              "RelativeDocumentMoniker": "Fiap.Usuarios\\Form1.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\Aula3\\Fiap.Usuarios\\Fiap.Usuarios\\Form1.cs [Design]",
+              "RelativeToolTip": "Fiap.Usuarios\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-11T00:48:39.007Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
