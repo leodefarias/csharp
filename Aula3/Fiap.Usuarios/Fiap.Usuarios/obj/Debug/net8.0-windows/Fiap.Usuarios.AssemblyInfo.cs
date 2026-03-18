@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fiap.Usuarios")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+059ff4301f249e632e6875a7ace5721d1862c8cb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3b3d989aa8f0d48e726bd326180235d3b758be49")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fiap.Usuarios")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fiap.Usuarios")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
