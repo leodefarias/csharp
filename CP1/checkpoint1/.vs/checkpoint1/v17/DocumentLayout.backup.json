@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{733FEA8B-F1EC-4387-AF94-833EA7993156}|checkpoint1.csproj|c:\\users\\labsfiap\\desktop\\csharp\\cp1\\checkpoint1\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{733FEA8B-F1EC-4387-AF94-833EA7993156}|checkpoint1.csproj|solutionrelative:formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{733FEA8B-F1EC-4387-AF94-833EA7993156}|checkpoint1.csproj|c:\\users\\labsfiap\\desktop\\csharp\\cp1\\checkpoint1\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{733FEA8B-F1EC-4387-AF94-833EA7993156}|checkpoint1.csproj|solutionrelative:formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{733FEA8B-F1EC-4387-AF94-833EA7993156}|checkpoint1.csproj|C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{733FEA8B-F1EC-4387-AF94-833EA7993156}|checkpoint1.csproj|solutionrelative:formprincipal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
       "AbsoluteMoniker": "D:0:0:{733FEA8B-F1EC-4387-AF94-833EA7993156}|checkpoint1.csproj|c:\\users\\labsfiap\\desktop\\csharp\\cp1\\checkpoint1\\endereco.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
@@ -34,30 +34,29 @@
               "RelativeToolTip": "Endereco.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T01:22:42.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-18T01:22:42.57Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "FormPrincipal.cs [Design]",
               "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\FormPrincipal.cs",
               "RelativeDocumentMoniker": "FormPrincipal.cs",
-              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\FormPrincipal.cs [Design]*",
-              "RelativeToolTip": "FormPrincipal.cs [Design]*",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\FormPrincipal.cs [Design]",
+              "RelativeToolTip": "FormPrincipal.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T00:32:25.822Z",
               "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "FormPrincipal.cs",
               "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\FormPrincipal.cs",
               "RelativeDocumentMoniker": "FormPrincipal.cs",
-              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\FormPrincipal.cs*",
-              "RelativeToolTip": "FormPrincipal.cs*",
-              "ViewState": "AgIAADoAAAAAAAAAAAAqwEsAAAAvAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\CP1\\checkpoint1\\FormPrincipal.cs",
+              "RelativeToolTip": "FormPrincipal.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T00:47:58.416Z",
               "EditorCaption": ""
