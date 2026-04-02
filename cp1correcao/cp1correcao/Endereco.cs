@@ -7,19 +7,10 @@ using System.Threading.Tasks;
 
 namespace cp1correcao
 {
-    public class Produto
+    public class Endereco
     {
-        [JsonPropertyName("nome")]
-        public string Nome { get; set; }
-
-        [JsonPropertyName("preco")]
-        public decimal Preco { get; set; }
-
-        [JsonPropertyName("quantidade")]
-        public int Quantidade { get; set; }
-
-        [JsonPropertyName("cepFornecedor")]
-        public string CepFornecedor { get; set; }
+        [JsonPropertyName("cep")]
+        public string Cep { get; set; }
 
         [JsonPropertyName("logradouro")]
         public string Logradouro { get; set; }
@@ -27,10 +18,10 @@ namespace cp1correcao
         [JsonPropertyName("bairro")]
         public string Bairro { get; set; }
 
-        [JsonPropertyName("cidade")]
+        [JsonPropertyName("localidade")]
         public string Cidade { get; set; }
 
-        [JsonPropertyName("estado")]
+        [JsonPropertyName("uf")]
         public string Estado { get; set; }
     }
 }

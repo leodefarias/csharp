@@ -1,1 +1,1 @@
-[{"nome":"123","preco":123,"quantidade":123,"categoria":"123"},{"nome":"123","preco":123,"quantidade":123,"categoria":"123"},{"nome":"leo","preco":123,"quantidade":123,"categoria":"leo"},{"nome":"123","preco":123,"quantidade":123,"categoria":"123"}]
+[{"nome":"123","preco":123,"quantidade":123,"cepFornecedor":null,"logradouro":null,"bairro":null,"cidade":null,"estado":null},{"nome":"leo","preco":123,"quantidade":123,"cepFornecedor":null,"logradouro":null,"bairro":null,"cidade":null,"estado":null}]
