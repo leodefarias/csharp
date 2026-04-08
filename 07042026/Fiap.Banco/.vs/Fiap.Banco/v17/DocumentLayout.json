@@ -1,0 +1,104 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Migrations\\20260408014906_CriarTabelaFuncionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Fiap.Banco.API\\Migrations\\20260408014906_CriarTabelaFuncionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|c:\\users\\labsfiap\\desktop\\csharp\\07042026\\fiap.banco\\fiap.banco.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|solutionrelative:fiap.banco.api\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|c:\\users\\labsfiap\\desktop\\csharp\\07042026\\fiap.banco\\fiap.banco.api\\models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|solutionrelative:fiap.banco.api\\models\\funcionario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|c:\\users\\labsfiap\\desktop\\csharp\\07042026\\fiap.banco\\fiap.banco.api\\migrations\\20260408014510_criartabelas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|solutionrelative:fiap.banco.api\\migrations\\20260408014510_criartabelas.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|c:\\users\\labsfiap\\desktop\\csharp\\07042026\\fiap.banco\\fiap.banco.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8735D8D5-33BB-402A-8136-D157D7671AAA}|Fiap.Banco.API\\Fiap.Banco.API.csproj|solutionrelative:fiap.banco.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260408014906_CriarTabelaFuncionario.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Migrations\\20260408014906_CriarTabelaFuncionario.cs",
+              "RelativeDocumentMoniker": "Fiap.Banco.API\\Migrations\\20260408014906_CriarTabelaFuncionario.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Migrations\\20260408014906_CriarTabelaFuncionario.cs",
+              "RelativeToolTip": "Fiap.Banco.API\\Migrations\\20260408014906_CriarTabelaFuncionario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T01:49:06.891Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "Fiap.Banco.API\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "Fiap.Banco.API\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwA4AAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T01:47:48.646Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Funcionario.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Models\\Funcionario.cs",
+              "RelativeDocumentMoniker": "Fiap.Banco.API\\Models\\Funcionario.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Models\\Funcionario.cs",
+              "RelativeToolTip": "Fiap.Banco.API\\Models\\Funcionario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T01:47:09.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "20260408014510_CriarTabelas.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Migrations\\20260408014510_CriarTabelas.cs",
+              "RelativeDocumentMoniker": "Fiap.Banco.API\\Migrations\\20260408014510_CriarTabelas.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Migrations\\20260408014510_CriarTabelas.cs",
+              "RelativeToolTip": "Fiap.Banco.API\\Migrations\\20260408014510_CriarTabelas.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T01:45:10.198Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Program.cs",
+              "RelativeDocumentMoniker": "Fiap.Banco.API\\Program.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\07042026\\Fiap.Banco\\Fiap.Banco.API\\Program.cs",
+              "RelativeToolTip": "Fiap.Banco.API\\Program.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-08T01:32:49.024Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
