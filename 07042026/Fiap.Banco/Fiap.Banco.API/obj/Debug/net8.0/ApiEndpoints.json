@@ -1,5 +1,114 @@
 [
   {
+    "ContainingType": "Fiap.Banco.API.Controllers.AgenciasController",
+    "Method": "GetAgencias",
+    "RelativePath": "api/Agencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[Fiap.Banco.API.Models.Agencia, Fiap.Banco.API, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fiap.Banco.API.Controllers.AgenciasController",
+    "Method": "PostAgencia",
+    "RelativePath": "api/Agencias",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "agencia",
+        "Type": "Fiap.Banco.API.Models.Agencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fiap.Banco.API.Models.Agencia",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fiap.Banco.API.Controllers.AgenciasController",
+    "Method": "GetAgencia",
+    "RelativePath": "api/Agencias/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "Fiap.Banco.API.Models.Agencia",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "Fiap.Banco.API.Controllers.AgenciasController",
+    "Method": "PutAgencia",
+    "RelativePath": "api/Agencias/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "agencia",
+        "Type": "Fiap.Banco.API.Models.Agencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Fiap.Banco.API.Controllers.AgenciasController",
+    "Method": "DeleteAgencia",
+    "RelativePath": "api/Agencias/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Fiap.Banco.API.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",

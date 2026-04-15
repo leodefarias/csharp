@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Fiap.Banco.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a26b898890999ee8cdc398594d8a2043ded8b749")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fadd8d9cd8f542c189f6ec156158884745c43d66")]
 [assembly: System.Reflection.AssemblyProductAttribute("Fiap.Banco.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Fiap.Banco.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
