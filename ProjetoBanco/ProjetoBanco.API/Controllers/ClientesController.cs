@@ -21,8 +21,7 @@ namespace ProjetoBanco.API.Controllers
         [HttpPost("pf")]
         public async Task<ActionResult<PessoaFisica>> PostPessoaFisica(PessoaFisicaDto dto)
         {
-            var cpfExistente = await _context.Clientes
-                .OfType<PessoaFisica>()
+            var cpfExistente = await _context.Set<PessoaFisica>()
                 .CountAsync(c => c.CPF == dto.CPF) > 0;
 
             if (cpfExistente)
@@ -58,8 +57,7 @@ namespace ProjetoBanco.API.Controllers
         [HttpPost("pj")]
         public async Task<ActionResult<PessoaJuridica>> PostPessoaJuridica(PessoaJuridicaDto dto)
         {
-            var cnpjExistente = await _context.Clientes
-                .OfType<PessoaJuridica>()
+            var cnpjExistente = await _context.Set<PessoaJuridica>()
                 .CountAsync(c => c.CNPJ == dto.CNPJ) > 0;
 
             if (cnpjExistente)
