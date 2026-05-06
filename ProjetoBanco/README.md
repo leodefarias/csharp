@@ -23,15 +23,13 @@ Justificativa: o produto Empréstimo permite implementar uma regra de negócio c
 | 301 – 600 | Aprovado | 5% ao mês |
 | 601 – 1000 | Aprovado | 3% ao mês |
 
-O score é calculado a partir do CPF (Pessoa Física) ou CNPJ (Pessoa Jurídica) do cliente no momento da contratação.
+O score é calculado a partir do hash do CPF (Pessoa Física) ou CNPJ (Pessoa Jurídica) do cliente no momento da contratação.
 
 ---
 
 ## 3. Diagrama de Classes
 
 > Arquivo fonte: `docs/diagrama-classes.puml` (PlantUML). Importe no [draw.io](https://app.diagrams.net) via **Extras → Edit Diagram** e exporte como PNG para a entrega.
-
-![Diagrama de Classes](docs/diagrama-classes.puml)
 
 ---
 
@@ -46,7 +44,7 @@ Cadastra uma nova agência.
   "nomeAgencia": "Agência Centro",
   "endereco": "Av. Paulista",
   "numero": "1000",
-  "cidade": "São Paulo",
+  "cidade": "Sao Paulo",
   "estado": "SP"
 }
 ```
@@ -58,7 +56,7 @@ Cadastra uma nova agência.
   "nomeAgencia": "Agência Centro",
   "endereco": "Av. Paulista",
   "numero": "1000",
-  "cidade": "São Paulo",
+  "cidade": "Sao Paulo",
   "estado": "SP"
 }
 ```
@@ -66,17 +64,57 @@ Cadastra uma nova agência.
 ---
 
 ### GET `/api/agencias/{id}`
-Busca agência por ID. Retorna **404** se não encontrada.
+Busca agência por ID.
+
+- **200** — agência encontrada
+- **404** — agência não encontrada
 
 ---
 
-### POST `/api/clientes/pf`
-Cadastra pessoa física.
+### POST `/api/produtos/emprestimo`
+Cadastra um produto do tipo Empréstimo.
 
 **Request:**
 ```json
 {
-  "nome": "João da Silva",
+  "nome": "Empréstimo Pessoal",
+  "descricao": "Empréstimo para pessoa física e jurídica",
+  "valorMinimo": 1000.00,
+  "valorMaximo": 50000.00,
+  "taxaJuros": 0
+}
+```
+
+**Response 201:**
+```json
+{
+  "idProduto": 1,
+  "nome": "Empréstimo Pessoal",
+  "descricao": "Empréstimo para pessoa física e jurídica",
+  "valorMinimo": 1000.00,
+  "valorMaximo": 50000.00,
+  "taxaJuros": 0,
+  "tipoProduto": "Emprestimo"
+}
+```
+
+---
+
+### GET `/api/produtos/{id}`
+Busca produto por ID.
+
+- **200** — produto encontrado
+- **404** — produto não encontrado
+
+---
+
+### POST `/api/clientes/pf`
+Cadastra uma pessoa física.
+
+**Request:**
+```json
+{
+  "nome": "Joao Silva",
   "email": "joao@email.com",
   "cpf": "123.456.789-00",
   "dataNascimento": "1990-05-15",
@@ -88,11 +126,12 @@ Cadastra pessoa física.
 ```json
 {
   "id": 1,
-  "nome": "João da Silva",
+  "nome": "Joao Silva",
   "email": "joao@email.com",
   "cpf": "123.456.789-00",
   "dataNascimento": "1990-05-15T00:00:00",
   "agenciaId": 1,
+  "agencia": null,
   "tipoCliente": "PF"
 }
 ```
@@ -104,7 +143,7 @@ Cadastra pessoa física.
 ---
 
 ### POST `/api/clientes/pj`
-Cadastra pessoa jurídica.
+Cadastra uma pessoa jurídica.
 
 **Request:**
 ```json
@@ -126,6 +165,7 @@ Cadastra pessoa jurídica.
   "cnpj": "12.345.678/0001-99",
   "razaoSocial": "Empresa XYZ Ltda",
   "agenciaId": 1,
+  "agencia": null,
   "tipoCliente": "PJ"
 }
 ```
@@ -137,12 +177,15 @@ Cadastra pessoa jurídica.
 ---
 
 ### GET `/api/clientes/{id}`
-Busca cliente por ID (retorna PF ou PJ com dados da agência). Retorna **404** se não encontrado.
+Busca cliente por ID (retorna PF ou PJ com dados da agência).
+
+- **200** — cliente encontrado
+- **404** — cliente não encontrado
 
 ---
 
 ### POST `/api/contratacoes`
-Solicita uma contratação de produto bancário. O score de crédito é calculado de forma síncrona e o resultado (Aprovado/Reprovado) já retorna na resposta.
+Solicita a contratação de um produto bancário. O score de crédito é calculado de forma síncrona e o resultado (`Aprovado` / `Reprovado`) já retorna na resposta.
 
 **Request:**
 ```json
@@ -186,7 +229,10 @@ Solicita uma contratação de produto bancário. O score de crédito é calculad
 ---
 
 ### GET `/api/contratacoes/{id}`
-Consulta status de uma contratação. Retorna **404** se não encontrada.
+Consulta status de uma contratação.
+
+- **200** — contratação encontrada
+- **404** — contratação não encontrada
 
 ---
 
@@ -207,8 +253,17 @@ Acesse o Swagger em: `https://localhost:{porta}/swagger`
 ### Aplicar migrations (banco Oracle FIAP)
 ```bash
 cd ProjetoBanco/ProjetoBanco.API
+dotnet tool install --global dotnet-ef   # caso não tenha instalado
 dotnet ef database update
 ```
+
+### Ordem de uso recomendada
+
+1. `POST /api/agencias` — crie uma agência
+2. `POST /api/produtos/emprestimo` — crie o produto Empréstimo
+3. `POST /api/clientes/pf` ou `POST /api/clientes/pj` — cadastre o cliente
+4. `POST /api/contratacoes` — solicite a contratação (score calculado automaticamente)
+5. `GET /api/contratacoes/{id}` — consulte o resultado
 
 ---
 
