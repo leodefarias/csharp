@@ -23,7 +23,7 @@ namespace ProjetoBanco.API.Controllers
         {
             var cpfExistente = await _context.Clientes
                 .OfType<PessoaFisica>()
-                .AnyAsync(c => c.CPF == dto.CPF);
+                .CountAsync(c => c.CPF == dto.CPF) > 0;
 
             if (cpfExistente)
             {
@@ -60,7 +60,7 @@ namespace ProjetoBanco.API.Controllers
         {
             var cnpjExistente = await _context.Clientes
                 .OfType<PessoaJuridica>()
-                .AnyAsync(c => c.CNPJ == dto.CNPJ);
+                .CountAsync(c => c.CNPJ == dto.CNPJ) > 0;
 
             if (cnpjExistente)
             {
