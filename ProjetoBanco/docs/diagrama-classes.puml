@@ -1,0 +1,80 @@
+@startuml diagrama-classes
+
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+skinparam classBackgroundColor #FEFECE
+skinparam classBorderColor #A80036
+skinparam arrowColor #A80036
+
+abstract class Cliente {
+    + Id : int
+    + Nome : string
+    + Email : string
+    + AgenciaId : int?
+    + TipoCliente : string
+}
+
+class PessoaFisica {
+    + CPF : string
+    + DataNascimento : DateTime
+}
+
+class PessoaJuridica {
+    + CNPJ : string
+    + RazaoSocial : string
+}
+
+class Agencia {
+    + IdAgencia : int
+    + NomeAgencia : string
+    + Endereco : string
+    + Numero : string
+    + Cidade : string
+    + Estado : string
+}
+
+abstract class Produto {
+    + IdProduto : int
+    + Nome : string
+    + Descricao : string
+    + TipoProduto : string
+}
+
+class Emprestimo {
+    + ValorMinimo : decimal
+    + ValorMaximo : decimal
+    + TaxaJuros : decimal
+}
+
+class Contratacao {
+    + IdContratacao : int
+    + ClienteId : int
+    + ProdutoId : int
+    + DataSolicitacao : DateTime
+    + Status : string
+    + ValorSolicitado : decimal?
+    + Observacao : string?
+}
+
+Cliente <|-- PessoaFisica
+Cliente <|-- PessoaJuridica
+Produto <|-- Emprestimo
+
+Cliente "N" --> "1" Agencia : pertence a
+Contratacao "N" --> "1" Cliente : contratante
+Contratacao "N" --> "1" Produto : produto contratado
+
+note right of Contratacao
+  Status: "Aprovado" | "Reprovado"
+  Score de crédito calculado
+  no momento da contratação
+end note
+
+note right of Emprestimo
+  TaxaJuros definida pelo score:
+  score <= 300: Reprovado
+  score 301-600: 5% ao mês
+  score 601-1000: 3% ao mês
+end note
+
+@enduml
