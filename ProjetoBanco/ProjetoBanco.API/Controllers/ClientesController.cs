@@ -21,10 +21,11 @@ namespace ProjetoBanco.API.Controllers
         [HttpPost("pf")]
         public async Task<ActionResult<PessoaFisica>> PostPessoaFisica(PessoaFisicaDto dto)
         {
-            var cpfExistente = await _context.Set<PessoaFisica>()
-                .CountAsync(c => c.CPF == dto.CPF) > 0;
+            var cpfCount = await _context.Database
+                .SqlQuery<int>($@"SELECT COUNT(*) AS ""Value"" FROM ""Clientes"" WHERE ""TipoCliente"" = 'PF' AND ""CPF"" = {dto.CPF}")
+                .FirstAsync();
 
-            if (cpfExistente)
+            if (cpfCount > 0)
             {
                 return Conflict(new { mensagem = "Já existe um cliente cadastrado com este CPF." });
             }
@@ -57,10 +58,11 @@ namespace ProjetoBanco.API.Controllers
         [HttpPost("pj")]
         public async Task<ActionResult<PessoaJuridica>> PostPessoaJuridica(PessoaJuridicaDto dto)
         {
-            var cnpjExistente = await _context.Set<PessoaJuridica>()
-                .CountAsync(c => c.CNPJ == dto.CNPJ) > 0;
+            var cnpjCount = await _context.Database
+                .SqlQuery<int>($@"SELECT COUNT(*) AS ""Value"" FROM ""Clientes"" WHERE ""TipoCliente"" = 'PJ' AND ""CNPJ"" = {dto.CNPJ}")
+                .FirstAsync();
 
-            if (cnpjExistente)
+            if (cnpjCount > 0)
             {
                 return Conflict(new { mensagem = "Já existe um cliente cadastrado com este CNPJ." });
             }
