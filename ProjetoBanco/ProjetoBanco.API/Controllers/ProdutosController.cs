@@ -19,7 +19,7 @@ namespace ProjetoBanco.API.Controllers
 
         // POST: api/produtos/emprestimo
         [HttpPost("emprestimo")]
-        public async Task<ActionResult<Emprestimo>> PostEmprestimo(EmprestimoDto dto)
+        public async Task<IActionResult> PostEmprestimo(EmprestimoDto dto)
         {
             var emprestimo = new Emprestimo
             {
@@ -27,18 +27,19 @@ namespace ProjetoBanco.API.Controllers
                 Descricao = dto.Descricao,
                 ValorMinimo = dto.ValorMinimo,
                 ValorMaximo = dto.ValorMaximo,
-                TaxaJuros = dto.TaxaJuros
+                TaxaJuros = dto.TaxaJuros,
+                TipoProduto = "Emprestimo"
             };
 
             _context.Produtos.Add(emprestimo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetProduto), new { id = emprestimo.IdProduto }, emprestimo);
+            return CreatedAtAction(nameof(GetProduto), new { id = emprestimo.IdProduto }, ToResponse(emprestimo));
         }
 
         // GET: api/produtos/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Produto>> GetProduto(int id)
+        public async Task<IActionResult> GetProduto(int id)
         {
             var produto = await _context.Produtos.FindAsync(id);
 
@@ -47,7 +48,25 @@ namespace ProjetoBanco.API.Controllers
                 return NotFound();
             }
 
-            return produto;
+            return Ok(ToResponse(produto));
+        }
+
+        private static object ToResponse(Produto produto)
+        {
+            return produto switch
+            {
+                Emprestimo e => new
+                {
+                    e.IdProduto,
+                    e.Nome,
+                    e.Descricao,
+                    e.ValorMinimo,
+                    e.ValorMaximo,
+                    e.TaxaJuros,
+                    TipoProduto = "Emprestimo"
+                },
+                _ => produto
+            };
         }
     }
 }

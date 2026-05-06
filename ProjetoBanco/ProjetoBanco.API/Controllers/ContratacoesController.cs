@@ -19,7 +19,7 @@ namespace ProjetoBanco.API.Controllers
 
         // POST: api/contratacoes
         [HttpPost]
-        public async Task<ActionResult<Contratacao>> PostContratacao(ContratacaoRequestDto dto)
+        public async Task<IActionResult> PostContratacao(ContratacaoRequestDto dto)
         {
             var cliente = await _context.Clientes.FindAsync(dto.ClienteId);
             if (cliente == null)
@@ -48,16 +48,14 @@ namespace ProjetoBanco.API.Controllers
             _context.Contratacoes.Add(contratacao);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetContratacao), new { id = contratacao.IdContratacao }, contratacao);
+            return CreatedAtAction(nameof(GetContratacao), new { id = contratacao.IdContratacao }, ToResponse(contratacao));
         }
 
         // GET: api/contratacoes/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Contratacao>> GetContratacao(int id)
+        public async Task<IActionResult> GetContratacao(int id)
         {
             var contratacao = await _context.Contratacoes
-                .Include(c => c.Cliente)
-                .Include(c => c.Produto)
                 .FirstOrDefaultAsync(c => c.IdContratacao == id);
 
             if (contratacao == null)
@@ -65,7 +63,21 @@ namespace ProjetoBanco.API.Controllers
                 return NotFound();
             }
 
-            return contratacao;
+            return Ok(ToResponse(contratacao));
+        }
+
+        private static object ToResponse(Contratacao c)
+        {
+            return new
+            {
+                c.IdContratacao,
+                c.ClienteId,
+                c.ProdutoId,
+                c.DataSolicitacao,
+                c.Status,
+                c.ValorSolicitado,
+                c.Observacao
+            };
         }
 
         private static (string status, string observacao) CalcularScoreCredito(Cliente cliente)
