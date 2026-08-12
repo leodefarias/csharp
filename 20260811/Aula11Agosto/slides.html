@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Revisão 1 — Fundamentos de C# na prática</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --fg: #f5f5f7;
+  --accent: #ED0973;
+  --accent-light: #ff5aa8;
+  --accent-dark: #B00757;
+  --muted: #a1a1aa;
+  --code-bg: #1a1a24;
+  --border: #2d2d3a;
+  --card: #14141c;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", -apple-system, Roboto, sans-serif;
+}
+.deck { position: relative; width: 100vw; height: 100vh; }
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 6rem 4rem;
+  animation: fade .3s ease-out;
+}
+.slide.active { display: flex; }
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.logo {
+  position: fixed;
+  top: 1.2rem;
+  left: 1.8rem;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: .05em;
+  z-index: 10;
+}
+.logo::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 26px;
+  margin-right: .4rem;
+  vertical-align: middle;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.accent-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  z-index: 10;
+}
+.credit {
+  position: fixed;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: .8rem;
+  z-index: 10;
+}
+h1 {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: 3.5rem;
+  line-height: 1.05;
+}
+h2 {
+  display: inline-block;
+  margin: 0 0 1.8rem;
+  padding-bottom: .6rem;
+  border-bottom: 3px solid var(--accent);
+  font-size: 2.4rem;
+}
+h3 {
+  margin: .8rem 0 .5rem;
+  color: var(--accent);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+p, li { font-size: 1.35rem; line-height: 1.5; }
+code {
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--accent-light);
+  font-family: Consolas, monospace;
+}
+pre {
+  padding: 1.3rem;
+  overflow: hidden;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  background: var(--code-bg);
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+pre code { padding: 0; border: 0; color: var(--fg); }
+.block-caption { margin: .5rem 0 0; color: var(--muted); font-size: 1rem; }
+.center { text-align: center; }
+.subtitle { margin: 0; color: var(--muted); font-size: 1.55rem; }
+.block-list { list-style: none; padding-left: 0; }
+.block-list li { position: relative; margin: .7rem 0; padding-left: 2rem; }
+.block-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55rem;
+  width: 11px;
+  height: 11px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+ol.block-list li::before { content: none; }
+ol.block-list { counter-reset: item; padding-left: 0; }
+ol.block-list li {
+  padding-left: 2.2rem;
+  counter-increment: item;
+}
+ol.block-list li::before {
+  content: counter(item) ".";
+  width: auto;
+  height: auto;
+  background: none;
+  transform: none;
+  color: var(--accent);
+  font-weight: 700;
+  top: 0;
+}
+.cards-grid {
+  display: grid;
+  gap: 1rem;
+}
+.cards-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cards-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.card {
+  padding: 1.2rem;
+  border-top: 3px solid var(--accent);
+  border-radius: 8px;
+  background: var(--card);
+}
+.card strong {
+  display: block;
+  margin-bottom: .45rem;
+  color: var(--accent-light);
+  font-family: Consolas, monospace;
+  font-size: 1.35rem;
+}
+.card p { margin: 0; color: var(--muted); font-size: 1rem; }
+.card .block-paragraph { margin: 0 0 .5rem; }
+.callout {
+  margin: 1rem 0;
+  padding: 1rem 1.4rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  background: rgba(237, 9, 115, .1);
+  font-size: 1.2rem;
+}
+.callout-priority { border-left-color: var(--accent-light); }
+.block-table { width: 100%; border-collapse: collapse; font-size: 1.15rem; }
+.block-table th, .block-table td { padding: .7rem; border: 1px solid var(--border); text-align: left; }
+.block-table th { background: var(--accent); }
+.nav {
+  position: fixed;
+  right: 1.8rem;
+  bottom: 1.2rem;
+  padding: .4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--muted);
+  z-index: 10;
+}
+.hint {
+  position: fixed;
+  left: 3rem;
+  bottom: 1.2rem;
+  color: var(--muted);
+  font-size: .8rem;
+  z-index: 10;
+}
+@media (max-width: 900px) {
+  .slide { padding: 4.5rem 2rem 3.5rem; }
+  h1 { font-size: 2.7rem; }
+  h2 { font-size: 2rem; }
+  p, li { font-size: 1.05rem; }
+  .cards-cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .cards-cols-2 { grid-template-columns: 1fr; }
+}
+
+</style>
+</head>
+<body>
+<div class="logo">FIAP</div>
+<div class="accent-bar"></div>
+<div class="credit">Professor Cassiolato</div>
+
+<div class="deck">
+  <section class="slide active center">
+    <h1>Revisão de C# na prática</h1>
+<p class="subtitle">Sistema de reservas de salas e equipamentos</p><p style="margin-top: 3rem; color: var(--muted);">Fundamentos · Classes · Coleções · Validação</p>  </section>
+
+  <section class="slide">
+    <h2>Projetos e soluções</h2>
+    <div class="cards-grid cards-cols-2">
+      <div class="card"><strong>Projeto</strong><p class="block-paragraph">Unidade que contém código, configurações e dependências e gera uma aplicação ou biblioteca.</p><pre class="block-code"><code>ReservaRecursos.csproj</code></pre></div>
+      <div class="card"><strong>Solução</strong><p class="block-paragraph">Organiza um ou mais projetos relacionados no Visual Studio.</p><pre class="block-code"><code>ReservaRecursos.sln</code></pre></div>
+    </div>
+    <div class="callout callout-default">Nesta aula, uma solução com um único projeto Console é suficiente.</div>
+  </section>
+
+  <section class="slide">
+    <h2>Tipos em C#</h2>
+    <div class="cards-grid cards-cols-2">
+      <div class="card"><strong>Tipos de valor</strong><p class="block-paragraph">Guardam o próprio valor. Uma atribuição cria uma cópia independente.</p><pre class="block-code"><code>int quantidade = 10;
+decimal preco = 25.90m;
+bool disponivel = true;
+DateTime inicio = DateTime.Now;
+</code></pre><p class="block-paragraph">Exemplos: estruturas (<code>struct</code>) e enumerações.</p></div>
+      <div class="card"><strong>Tipos de referência</strong><p class="block-paragraph">Guardam uma referência para um objeto. Duas variáveis podem apontar para o mesmo objeto.</p><pre class="block-code"><code>string nome = &quot;Sala 301&quot;;
+Recurso recurso = new Recurso();
+List&lt;Recurso&gt; recursos = new();
+</code></pre><p class="block-paragraph">Exemplos: classes, interfaces, arrays e delegados.</p></div>
+    </div>
+    <div class="callout callout-default">Todos os tipos derivam de <code>System.Object</code>. Tipos de valor passam por <code>System.ValueType</code>; tipos de referência derivam diretamente ou indiretamente de <code>object</code>.</div>
+  </section>
+
+  <section class="slide">
+    <h2>Validar antes de alterar</h2>
+    <div class="cards-grid cards-cols-2">
+      <div class="card"><pre class="block-code"><code>if (!int.TryParse(entrada, out int opcao))
+{
+    Console.WriteLine(
+        &quot;Digite uma opção numérica.&quot;);
+}
+</code></pre></div>
+      <div class="card"><strong>Ordem segura</strong><ol class="block-list"><li>Ler.</li><li>Converter.</li><li>Validar.</li><li>Alterar a lista.</li></ol></div>
+    </div>
+    
+  </section>
+
+  <section class="slide">
+    <h2>Classe, objeto e coleção</h2>
+    <div class="cards-grid cards-cols-3"><div class="card"><strong>Classe</strong><p class="block-paragraph">É a definição do tipo: determina quais dados e comportamentos seus objetos terão.</p><pre class="block-code"><code>public class Recurso
+{
+    public int Id { get; set; }
+    public string Nome { get; set; }
+}
+</code></pre></div><div class="card"><strong>Objeto</strong><p class="block-paragraph">É uma instância concreta da classe, com identidade e valores próprios.</p><pre class="block-code"><code>var sala = new Recurso
+{
+    Id = 1,
+    Nome = &quot;Sala 301&quot;
+};
+</code></pre></div><div class="card"><strong>Coleção</strong><p class="block-paragraph">Armazena vários objetos do mesmo tipo.</p><pre class="block-code"><code>var recursos =
+    new List&lt;Recurso&gt;();
+
+recursos.Add(sala);
+</code></pre></div></div>
+    <div class="callout callout-default">A classe é a definição; o objeto é uma ocorrência concreta criada com <code>new</code>.</div>
+  </section>
+
+  <section class="slide">
+    <h2>Como o programa será construído</h2>
+    <div class="cards-grid cards-cols-3"><div class="card"><strong>dados</strong><p class="block-paragraph">Variáveis e propriedades representam as informações.</p></div><div class="card"><strong>decisões</strong><p class="block-paragraph"><code>if</code> e <code>switch</code> aplicam regras e escolhem caminhos.</p></div><div class="card"><strong>repetições</strong><p class="block-paragraph"><code>while</code> mantém o menu e <code>foreach</code> percorre listas.</p></div><div class="card"><strong>métodos</strong><p class="block-paragraph">Separam operações como cadastrar, listar e reservar.</p></div><div class="card"><strong>classes</strong><p class="block-paragraph">Definem os modelos <code>Recurso</code> e <code>Reserva</code>.</p></div><div class="card"><strong>coleções</strong><p class="block-paragraph"><code>List&amp;lt;T&amp;gt;</code> mantém vários recursos e reservas.</p></div></div>
+    <div class="callout callout-default">Este mapa mostra onde cada fundamento entra na atividade, não uma sequência de execução.</div>
+  </section>
+
+  <section class="slide center">
+    <h2 style="display: block; margin: 0 auto 2rem;">Demonstração</h2>
+<h3 style="font-size: 2rem; text-transform: none;">Catálogo de livros</h3>    <div style="max-width: 760px; margin: 1rem auto 0; text-align: left;">
+      <ul class="block-list"><li>Criar a solução e o projeto <code>CatalogoLivros</code>.</li><li>Montar um menu para cadastrar, listar e sair.</li><li>Cadastrar livros em uma <code>List&amp;lt;Livro&amp;gt;</code>.</li><li>Listar os livros com <code>foreach</code>.</li></ul><div class="callout callout-default">A solução da demonstração será compartilhada com os slides.</div>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Atividade: ReservaLab</h2>
+    <div class="callout callout-default">Uma empresa precisa reservar salas e equipamentos sem conflitos.</div><ul class="block-list"><li>Cadastrar e listar recursos.</li><li>Criar e listar reservas.</li><li>Manter o menu em execução.</li><li>Validar responsável, recurso e período.</li><li>Impedir duas reservas simultâneas para o mesmo recurso.</li></ul>
+  </section>
+
+  <section class="slide">
+    <h2>Quando existe conflito?</h2>
+<pre class="block-code"><code>mesmo recurso
+e
+novoInicio &lt; reservaExistente.Fim
+e
+novoFim &gt; reservaExistente.Inicio
+</code></pre>    <div class="cards-grid cards-cols-2">
+      <div class="card"><strong>Rejeitar</strong><p class="block-paragraph">09:00–10:00 e 09:30–10:30</p></div>
+      <div class="card"><strong>Aceitar</strong><p class="block-paragraph">09:00–10:00 e 10:00–11:00</p></div>
+    </div>
+    
+  </section>
+
+</div>
+
+<div class="nav"><span id="cur">1</span> / <span id="tot">9</span></div>
+<div class="hint">Use as setas do teclado ou clique para navegar</div>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+const current = document.getElementById("cur");
+const total = document.getElementById("tot");
+let index = 0;
+
+total.textContent = slides.length;
+
+function show(nextIndex) {
+  index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+  slides.forEach((slide, slideIndex) => {
+    slide.classList.toggle("active", slideIndex === index);
+  });
+  current.textContent = index + 1;
+}
+
+document.addEventListener("keydown", event => {
+  if (["ArrowRight", " ", "PageDown"].includes(event.key)) show(index + 1);
+  if (["ArrowLeft", "PageUp"].includes(event.key)) show(index - 1);
+  if (event.key === "Home") show(0);
+  if (event.key === "End") show(slides.length - 1);
+});
+
+document.addEventListener("click", event => {
+  show(event.clientX > window.innerWidth / 2 ? index + 1 : index - 1);
+});
+
+show(0);
+
+</script>
+</body>
+</html>

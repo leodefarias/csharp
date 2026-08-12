@@ -1,0 +1,15 @@
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.AssemblyInfoInputs.cache
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.AssemblyInfo.cs
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.csproj.CoreCompileInputs.cache
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.sourcelink.json
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\bin\Debug\net10.0\CatalogoLivros.exe
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\bin\Debug\net10.0\CatalogoLivros.deps.json
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\bin\Debug\net10.0\CatalogoLivros.runtimeconfig.json
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\bin\Debug\net10.0\CatalogoLivros.dll
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\bin\Debug\net10.0\CatalogoLivros.pdb
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.dll
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\refint\CatalogoLivros.dll
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.pdb
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\CatalogoLivros.genruntimeconfig.cache
+C:\Users\labsfiap\Desktop\csharp\20260811\CatalogoLivros\obj\Debug\net10.0\ref\CatalogoLivros.dll

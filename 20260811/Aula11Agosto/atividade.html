@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Revisão 1 — Fundamentos de C# na prática — Atividade</title>
+  <link rel="icon" href="data:,">
+  <style>
+:root {
+  color-scheme: dark;
+  --bg: #090d18;
+  --surface: #111827;
+  --surface-2: #182235;
+  --border: #2b3952;
+  --fg: #e5edf9;
+  --muted: #93a4bf;
+  --accent: #38bdf8;
+  --danger: #fb7185;
+  --warning: #fbbf24;
+  --success: #34d399;
+  --optional: #a78bfa;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", sans-serif;
+}
+header {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: .7rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+header strong { color: var(--accent); font-size: 1.15rem; }
+header span { color: var(--muted); font-size: .82rem; }
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+}
+.clear-button {
+  padding: .45rem .65rem;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: .75rem;
+}
+.progress-tracker {
+  width: 150px;
+  display: grid;
+  gap: .35rem;
+}
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  color: var(--muted);
+  font-size: .72rem;
+}
+.progress-track {
+  height: 7px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #080d18;
+}
+.progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--accent), var(--success));
+  transition: width .3s ease;
+}
+main {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+}
+aside {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 1rem;
+  border-right: 1px solid var(--border);
+  background: #0d1321;
+}
+.filter {
+  width: 100%;
+  margin-bottom: .5rem;
+  padding: .75rem;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  text-align: left;
+  cursor: pointer;
+}
+.filter.active {
+  border-color: var(--border);
+  background: var(--surface-2);
+  color: var(--fg);
+}
+.filter.completed { color: var(--success); }
+.filter.optional { color: #c4b5fd; }
+.content {
+  min-height: 0;
+  padding: 1.2rem 1.5rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+.toolbar h1 { margin: 0; font-size: 1.4rem; }
+.badge {
+  display: inline-block;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, .14);
+  color: var(--accent);
+  font-size: .72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.badge.optional {
+  background: rgba(167, 139, 250, .14);
+  color: #c4b5fd;
+}
+.ticket {
+  display: none;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.ticket.active {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+}
+.ticket-head {
+  padding: 1.2rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--surface-2);
+}
+.ticket-head h2 { margin: .4rem 0 0; font-size: 1.25rem; }
+.ticket-body {
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  padding: 1.4rem;
+  overflow-y: auto;
+}
+.panel {
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  background: #0d1423;
+}
+.panel h3 {
+  margin: 0 0 .7rem;
+  color: var(--accent);
+  font-size: .85rem;
+  text-transform: uppercase;
+}
+.panel p { margin: 0; line-height: 1.55; }
+.panel .block-paragraph { margin: 0 0 .5rem; }
+.panel .block-paragraph:last-child { margin-bottom: 0; }
+.panel ol, .panel ul, .panel .block-list {
+  margin: 0;
+  padding-left: 1.3rem;
+  line-height: 1.6;
+}
+.panel li { margin-bottom: .25rem; }
+.implementation { border-left: 4px solid var(--warning); }
+.acceptance { border-left: 4px solid var(--success); }
+.validation { border-left: 4px solid var(--accent); }
+.dependency { border-left: 4px solid var(--optional); }
+.block-table, table { width: 100%; border-collapse: collapse; }
+.block-table th, .block-table td, th, td {
+  padding: .45rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  font-size: .85rem;
+}
+.block-table th, th { width: 42%; color: var(--muted); }
+.callout {
+  margin: .6rem 0 0;
+  padding: .7rem .9rem;
+  border-radius: 6px;
+  background: rgba(56, 189, 248, .1);
+}
+code {
+  padding: 2px 5px;
+  border-radius: 4px;
+  background: #080d18;
+  color: #bae6fd;
+}
+pre, .block-code {
+  margin: .7rem 0 0;
+  padding: .8rem;
+  overflow-x: auto;
+  border-radius: 6px;
+  background: #080d18;
+}
+pre code, .block-code code { padding: 0; color: var(--fg); }
+.cards-grid { display: grid; gap: .7rem; margin-top: .5rem; }
+.cards-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cards-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.card {
+  padding: .7rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #0d1423;
+}
+.ticket-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 1.4rem 1rem;
+}
+.complete-button {
+  min-width: 165px;
+  padding: .58rem .9rem;
+  border: 1px solid #2f855f;
+  border-radius: 8px;
+  background: #143b2d;
+  color: #b8f7d9;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: .8rem;
+}
+.complete-button.completed {
+  border-color: #52627b;
+  background: #202b3d;
+  color: #d1d9e8;
+}
+footer {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: .55rem;
+  padding: .3rem 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: .72rem;
+}
+.spark {
+  position: fixed;
+  z-index: 1000;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--warning);
+  pointer-events: none;
+  animation: spark .65s ease-out forwards;
+}
+@keyframes spark {
+  to {
+    opacity: 0;
+    transform: translate(var(--x), var(--y)) scale(.2);
+  }
+}
+#fireworks {
+  position: fixed;
+  inset: 0;
+  z-index: 900;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+@media (max-width: 820px) {
+  html, body { overflow: auto; height: auto; }
+  main { grid-template-columns: 1fr; }
+  aside {
+    display: flex;
+    gap: .5rem;
+    overflow-x: auto;
+    border-right: 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .filter { min-width: 210px; }
+  .content { min-height: 720px; }
+  .ticket-body { grid-template-columns: 1fr; }
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <div>
+      <strong>Tickets da atividade</strong>
+      <span>Revisão 1 — Fundamentos de C# na prática</span>
+    </div>
+    <div class="header-actions">
+      <button class="clear-button" id="clear-progress" type="button">Limpar</button>
+      <div class="progress-tracker">
+        <div class="progress-label">
+          <span>Progresso</span>
+          <strong id="progress-value">0%</strong>
+        </div>
+        <div class="progress-track"><div class="progress-bar" id="progress-bar"></div></div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <aside>
+      <button class="filter active" data-ticket="LAB-001">LAB-001 · Criar o menu interativo</button>
+      <button class="filter" data-ticket="LAB-002">LAB-002 · Modelar os recursos compartilhados</button>
+      <button class="filter" data-ticket="LAB-003">LAB-003 · Modelar uma reserva</button>
+      <button class="filter" data-ticket="LAB-004">LAB-004 · Cadastrar recursos</button>
+      <button class="filter" data-ticket="LAB-005">LAB-005 · Cadastrar reservas</button>
+      <button class="filter" data-ticket="LAB-006">LAB-006 · Listar recursos</button>
+      <button class="filter" data-ticket="LAB-007">LAB-007 · Listar reservas</button>
+      <button class="filter" data-ticket="LAB-008">LAB-008 · Impedir conflitos de reserva</button>
+      <button class="filter optional" data-ticket="LAB-009">LAB-009 · Implementar uma melhoria</button>
+      <button class="filter optional" data-ticket="LAB-010">LAB-010 · Salvar e carregar os dados em JSON</button>
+    </aside>
+
+    <section class="content">
+      <div class="toolbar">
+        <h1>Tickets da atividade</h1>
+        <span class="badge">8 obrigatórios · 2 opcionais</span>
+      </div>
+
+      <article class="ticket active" id="LAB-001" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Controle de fluxo</span>
+          <h2>Criar o menu interativo</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p class="block-paragraph">Use a solução e o projeto Console criados na demonstração.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <pre class="block-code"><code>1 - Cadastrar recurso
+2 - Criar reserva
+3 - Listar recursos
+4 - Listar reservas
+0 - Sair
+</code></pre><p class="block-paragraph">Use <code>while</code>, <code>switch</code> e <code>int.TryParse</code>.</p>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>O menu reaparece após cada operação.</li><li><code>0</code> encerra o programa.</li><li>Texto não encerra a aplicação.</li><li>Opção inexistente gera mensagem clara.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <ol class="block-list"><li>Digite <code>abc</code>.</li><li>Digite <code>9</code>.</li><li>Selecione uma opção ainda não implementada.</li><li>Encerre com <code>0</code>.</li></ol>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-001">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-002" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Classes e objetos</span>
+          <h2>Modelar os recursos compartilhados</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p>Concluir <code>LAB-001</code>.</p>
+            <p class="block-paragraph">Concluir <code>LAB-001</code>.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <p class="block-paragraph">Crie a classe <code>Recurso</code> com:</p><ul class="block-list"><li><code>Id</code> do tipo <code>int</code>;</li><li><code>Nome</code> do tipo <code>string</code>;</li><li><code>Tipo</code> do tipo <code>string</code>.</li></ul>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>A classe compila.</li><li>As propriedades possuem os tipos solicitados.</li><li>Textos possuem valor inicial seguro.</li><li>O aluno explica classe versus objeto.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <p class="block-paragraph">Crie temporariamente um objeto <code>Sala 301</code> para confirmar que a classe pode ser instanciada.</p>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-002">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-003" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Classes e datas</span>
+          <h2>Modelar uma reserva</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p>Concluir <code>LAB-002</code>.</p>
+            <p class="block-paragraph">Concluir <code>LAB-002</code>.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <p class="block-paragraph">Crie a classe <code>Reserva</code> com:</p><ul class="block-list"><li><code>Id</code> do tipo <code>int</code>;</li><li><code>Recurso</code> do tipo <code>Recurso</code>;</li><li><code>Responsavel</code> do tipo <code>string</code>;</li><li><code>Inicio</code> e <code>Fim</code> do tipo <code>DateTime</code>.</li></ul>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>A classe compila.</li><li>A reserva referencia um objeto <code>Recurso</code>.</li><li>Responsável possui valor inicial seguro.</li><li>Início e fim usam <code>DateTime</code>.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <p class="block-paragraph">Crie temporariamente uma reserva com um recurso, responsável e dois horários válidos.</p>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-003">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-004" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Métodos e validação</span>
+          <h2>Cadastrar recursos</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p>Concluir <code>LAB-003</code>.</p>
+            <p class="block-paragraph">Concluir <code>LAB-003</code>.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <ol class="block-list"><li>Crie uma <code>List&amp;lt;Recurso&amp;gt;</code> fora do laço do menu.</li><li>Extraia o cadastro para um método.</li><li>Leia nome e tipo.</li><li>Gere um ID não repetido.</li><li>Valide e adicione à lista.</li></ol>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>Nome e tipo vazios são rejeitados após <code>Trim</code>.</li><li>O ID não se repete.</li><li>A validação ocorre antes de <code>Add</code>.</li><li>O recurso permanece na lista após voltar ao menu.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <p class="block-paragraph">Teste três espaços no nome. Depois cadastre <code>Sala 301</code> e <code>Projetor 1</code>.</p>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-004">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-005" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Datas e validação</span>
+          <h2>Cadastrar reservas</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p>Concluir <code>LAB-004</code>.</p>
+            <p class="block-paragraph">Concluir <code>LAB-004</code>.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <ol class="block-list"><li>Crie uma <code>List&amp;lt;Reserva&amp;gt;</code> fora do menu.</li><li>Solicite o ID de um recurso existente.</li><li>Leia responsável, início e fim.</li><li>Use o formato <code>dd/MM/yyyy HH:mm</code>.</li><li>Valide e adicione a reserva.</li></ol>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>Recurso inexistente é rejeitado.</li><li>Responsável vazio é rejeitado.</li><li>Data inválida não encerra o programa.</li><li>Fim menor ou igual ao início é rejeitado.</li><li>Reserva válida entra na lista.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <p class="block-paragraph">Teste ID inexistente, data <code>amanhã</code>, fim anterior ao início e uma reserva válida.</p>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-005">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-006" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Coleções</span>
+          <h2>Listar recursos</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p>Concluir <code>LAB-005</code>.</p>
+            <p class="block-paragraph">Concluir <code>LAB-005</code>.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <ol class="block-list"><li>Implemente a opção de listar recursos.</li><li>Trate a lista vazia.</li><li>Percorra com <code>foreach</code>.</li><li>Exiba ID, tipo e nome.</li></ol>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>Lista vazia produz mensagem clara.</li><li>A listagem não altera a coleção.</li><li>Todos os recursos cadastrados aparecem.</li><li>A operação está em um método.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <pre class="block-code"><code>===== Recursos =====
+#1 | Sala | Sala 301
+#2 | Equipamento | Projetor 1
+</code></pre>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-006">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-007" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Coleções e formatação</span>
+          <h2>Listar reservas</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p>Concluir <code>LAB-006</code>.</p>
+            <p class="block-paragraph">Concluir <code>LAB-006</code>.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <ol class="block-list"><li>Implemente a opção de listar reservas.</li><li>Trate a lista vazia.</li><li>Percorra com <code>foreach</code>.</li><li>Exiba recurso, responsável, início e fim.</li></ol>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>Lista vazia produz mensagem clara.</li><li>Datas usam <code>dd/MM/yyyy HH:mm</code>.</li><li>O nome do recurso aparece.</li><li>A listagem não altera a coleção.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <pre class="block-code"><code>#1 | Sala 301 | Ana
+10/08/2026 09:00 até 10/08/2026 10:00
+</code></pre>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-007">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-008" data-required="true">
+        <div class="ticket-head">
+          <span class="badge">Regra de negócio</span>
+          <h2>Impedir conflitos de reserva</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p>Concluir <code>LAB-007</code>.</p>
+            <p class="block-paragraph">Concluir <code>LAB-007</code>.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <pre class="block-code"><code>mesmo recurso
+e novo início &lt; fim existente
+e novo fim &gt; início existente
+</code></pre><p class="block-paragraph">Procure conflito antes de executar <code>Add</code>.</p>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>Sobreposição no mesmo recurso é rejeitada.</li><li>Períodos encostados são aceitos.</li><li>Outro recurso no mesmo horário é aceito.</li><li>Conflito não altera a lista.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <table class="block-table"><thead><tr><th>Cenário</th><th>Resultado</th></tr></thead><tbody><tr><td>09:00–10:00 / 09:30–10:30</td><td>Rejeitar</td></tr><tr><td>09:00–10:00 / 08:00–09:30</td><td>Rejeitar</td></tr><tr><td>09:00–10:00 / 10:00–11:00</td><td>Aceitar</td></tr><tr><td>Recursos diferentes</td><td>Aceitar</td></tr></tbody></table>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-008">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-009" data-required="false">
+        <div class="ticket-head">
+          <span class="badge optional">Opcional</span>
+          <h2>Implementar uma melhoria</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p class="block-paragraph">Concluir todos os tickets obrigatórios.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <p class="block-paragraph">Escolha uma melhoria:</p><ul class="block-list"><li>filtrar reservas por responsável;</li><li>cancelar uma reserva por ID;</li><li>listar recursos disponíveis em um período;</li><li>mostrar a quantidade de reservas por recurso.</li></ul>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <p class="block-paragraph">A melhoria funciona sem quebrar cadastro, validação, conflito ou listagem.</p>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <p class="block-paragraph">Demonstre um caso de sucesso e um caso em que a entrada deve ser rejeitada ou não encontrada.</p>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-009">Marcar como concluído</button>
+        </div>
+      </article>
+      <article class="ticket" id="LAB-010" data-required="false">
+        <div class="ticket-head">
+          <span class="badge optional">Opcional</span>
+          <h2>Salvar e carregar os dados em JSON</h2>
+        </div>
+        <div class="ticket-body">
+          <div class="panel dependency">
+            <h3>Dependência</h3>
+            <p class="block-paragraph">Concluir todos os tickets obrigatórios.</p>
+          </div>
+          <div class="panel implementation">
+            <h3>Implementação solicitada</h3>
+            <ol class="block-list"><li>Serializar recursos e reservas com <code>System.Text.Json</code>.</li><li>Salvar os dados em arquivos JSON ao encerrar.</li><li>Carregar os arquivos quando o programa iniciar.</li><li>Tratar a primeira execução, quando os arquivos ainda não existem.</li></ol>
+          </div>
+          <div class="panel acceptance">
+            <h3>Critérios de aceite</h3>
+            <ul class="block-list"><li>Os arquivos são criados automaticamente.</li><li>Recursos e reservas reaparecem após reiniciar.</li><li>Arquivo inexistente não encerra o programa.</li><li>Os tickets obrigatórios continuam funcionando.</li></ul>
+          </div>
+          <div class="panel validation">
+            <h3>Validação</h3>
+            <ol class="block-list"><li>Cadastre um recurso e uma reserva.</li><li>Encerre a aplicação.</li><li>Execute novamente.</li><li>Confirme os dados pelas opções de listagem.</li></ol>
+          </div>
+        </div>
+        <div class="ticket-footer">
+          <button class="complete-button" data-complete="LAB-010">Marcar como concluído</button>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <span>Professor Cassiolato</span>
+  </footer>
+  <canvas id="fireworks"></canvas>
+
+  <script>
+    const STORAGE_KEY = "lesson-builder-revisao-fundamentos-aula01-tickets";
+const filters = document.querySelectorAll(".filter");
+const tickets = document.querySelectorAll(".ticket");
+const requiredTickets = [...tickets].filter(ticket => ticket.dataset.required === "true");
+const completeButtons = document.querySelectorAll(".complete-button");
+const progressBar = document.querySelector("#progress-bar");
+const progressValue = document.querySelector("#progress-value");
+const completed = new Set(JSON.parse(localStorage.getItem(STORAGE_KEY) ?? "[]"));
+
+filters.forEach(filter => {
+  filter.addEventListener("click", () => {
+    filters.forEach(item => item.classList.toggle("active", item === filter));
+    tickets.forEach(ticket => {
+      ticket.classList.toggle("active", ticket.id === filter.dataset.ticket);
+    });
+  });
+});
+
+completeButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    const ticketId = button.dataset.complete;
+    const wasCompleted = completed.has(ticketId);
+
+    if (wasCompleted) {
+      completed.delete(ticketId);
+    } else {
+      completed.add(ticketId);
+      createSparks(button);
+    }
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify([...completed]));
+    updateProgress(!wasCompleted);
+  });
+});
+
+document.querySelector("#clear-progress").addEventListener("click", () => {
+  completed.clear();
+  localStorage.removeItem(STORAGE_KEY);
+  updateProgress(false);
+});
+
+function updateProgress(celebrate) {
+  const requiredCompleted = requiredTickets.filter(ticket =>
+    completed.has(ticket.id)).length;
+  const percentage = requiredTickets.length === 0
+    ? 0
+    : Math.round((requiredCompleted / requiredTickets.length) * 100);
+
+  progressBar.style.width = `${percentage}%`;
+  progressValue.textContent = `${percentage}%`;
+
+  completeButtons.forEach(button => {
+    const done = completed.has(button.dataset.complete);
+    button.classList.toggle("completed", done);
+    button.textContent = done ? "Reabrir ticket" : "Marcar como concluído";
+  });
+
+  filters.forEach(filter => {
+    const done = completed.has(filter.dataset.ticket);
+    filter.classList.toggle("completed", done);
+    const label = filter.textContent.replace(/^✓\s*/, "");
+    filter.textContent = done ? `✓ ${label}` : label;
+  });
+
+  if (celebrate && percentage === 100) {
+    startFireworks(5000);
+  }
+}
+
+function createSparks(button) {
+  const rect = button.getBoundingClientRect();
+  const originX = rect.left + rect.width / 2;
+  const originY = rect.top + rect.height / 2;
+
+  for (let index = 0; index < 14; index++) {
+    const spark = document.createElement("span");
+    const angle = (Math.PI * 2 * index) / 14;
+    const distance = 28 + Math.random() * 28;
+    spark.className = "spark";
+    spark.style.left = `${originX}px`;
+    spark.style.top = `${originY}px`;
+    spark.style.setProperty("--x", `${Math.cos(angle) * distance}px`);
+    spark.style.setProperty("--y", `${Math.sin(angle) * distance}px`);
+    document.body.append(spark);
+    spark.addEventListener("animationend", () => spark.remove());
+  }
+}
+
+function startFireworks(durationMs) {
+  const canvas = document.querySelector("#fireworks");
+  const context = canvas.getContext("2d");
+  const particles = [];
+  const colors = ["#38bdf8", "#34d399", "#fbbf24", "#fb7185", "#a78bfa"];
+  const startedAt = performance.now();
+  let lastBurst = 0;
+
+  function resize() {
+    canvas.width = window.innerWidth * devicePixelRatio;
+    canvas.height = window.innerHeight * devicePixelRatio;
+    context.setTransform(devicePixelRatio, 0, 0, devicePixelRatio, 0, 0);
+  }
+
+  function burst() {
+    const x = window.innerWidth * (.15 + Math.random() * .7);
+    const y = window.innerHeight * (.15 + Math.random() * .5);
+    const color = colors[Math.floor(Math.random() * colors.length)];
+
+    for (let index = 0; index < 45; index++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 1.8 + Math.random() * 4;
+      particles.push({
+        x,
+        y,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        life: 1,
+        color
+      });
+    }
+  }
+
+  function frame(now) {
+    context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+
+    if (now - lastBurst > 280 && now - startedAt < durationMs - 700) {
+      burst();
+      lastBurst = now;
+    }
+
+    for (let index = particles.length - 1; index >= 0; index--) {
+      const particle = particles[index];
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+      particle.vy += .035;
+      particle.life -= .014;
+
+      if (particle.life <= 0) {
+        particles.splice(index, 1);
+        continue;
+      }
+
+      context.globalAlpha = particle.life;
+      context.fillStyle = particle.color;
+      context.beginPath();
+      context.arc(particle.x, particle.y, 2.4, 0, Math.PI * 2);
+      context.fill();
+    }
+
+    context.globalAlpha = 1;
+
+    if (now - startedAt < durationMs || particles.length > 0) {
+      requestAnimationFrame(frame);
+    } else {
+      context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    }
+  }
+
+  resize();
+  requestAnimationFrame(frame);
+}
+
+updateProgress(false);
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260811\\catalogolivros\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260811\\catalogolivros\\recurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|solutionrelative:recurso.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260811\\catalogolivros\\reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|solutionrelative:reserva.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260811\\catalogolivros\\livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{03CB635E-933F-4FEF-B64A-EB74486A0484}|CatalogoLivros.csproj|solutionrelative:livro.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Reserva.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Reserva.cs",
+              "RelativeDocumentMoniker": "Reserva.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Reserva.cs",
+              "RelativeToolTip": "Reserva.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-12T00:55:43.132Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Recurso.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Recurso.cs",
+              "RelativeDocumentMoniker": "Recurso.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Recurso.cs",
+              "RelativeToolTip": "Recurso.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-12T00:56:56.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Livro.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Livro.cs",
+              "RelativeDocumentMoniker": "Livro.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Livro.cs",
+              "RelativeToolTip": "Livro.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-12T00:39:29.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260811\\CatalogoLivros\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-12T00:37:10.349Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
