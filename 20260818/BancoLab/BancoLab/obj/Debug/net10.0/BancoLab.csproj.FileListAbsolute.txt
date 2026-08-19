@@ -1,0 +1,15 @@
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\bin\Debug\net10.0\BancoLab.exe
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\bin\Debug\net10.0\BancoLab.deps.json
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\bin\Debug\net10.0\BancoLab.runtimeconfig.json
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\bin\Debug\net10.0\BancoLab.dll
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\bin\Debug\net10.0\BancoLab.pdb
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.AssemblyInfoInputs.cache
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.AssemblyInfo.cs
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.csproj.CoreCompileInputs.cache
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.sourcelink.json
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.dll
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\refint\BancoLab.dll
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.pdb
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\BancoLab.genruntimeconfig.cache
+C:\Users\labsfiap\Desktop\csharp\20260818\BancoLab\BancoLab\obj\Debug\net10.0\ref\BancoLab.dll

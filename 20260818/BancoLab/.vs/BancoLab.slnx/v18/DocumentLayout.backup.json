@@ -1,0 +1,107 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260818\\bancolab\\bancolab\\conta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|solutionrelative:bancolab\\conta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260818\\bancolab\\bancolab\\iconta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|solutionrelative:bancolab\\iconta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260818\\bancolab\\bancolab\\movimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|solutionrelative:bancolab\\movimento.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260818\\bancolab\\bancolab\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|solutionrelative:bancolab\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|c:\\users\\labsfiap\\desktop\\csharp\\20260818\\bancolab\\bancolab\\tipoconta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A15B9F71-44D8-49D2-8C58-7FD1EDC61103}|BancoLab\\BancoLab.csproj|solutionrelative:bancolab\\tipoconta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\Program.cs",
+              "RelativeDocumentMoniker": "BancoLab\\Program.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\Program.cs",
+              "RelativeToolTip": "BancoLab\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T00:59:28.807Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Conta.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\Conta.cs",
+              "RelativeDocumentMoniker": "BancoLab\\Conta.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\Conta.cs",
+              "RelativeToolTip": "BancoLab\\Conta.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAiwDUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T01:03:37.851Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Movimento.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\Movimento.cs",
+              "RelativeDocumentMoniker": "BancoLab\\Movimento.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\Movimento.cs",
+              "RelativeToolTip": "BancoLab\\Movimento.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T01:19:51.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IConta.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\IConta.cs",
+              "RelativeDocumentMoniker": "BancoLab\\IConta.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\IConta.cs",
+              "RelativeToolTip": "BancoLab\\IConta.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T01:01:01.613Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TipoConta.cs",
+              "DocumentMoniker": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\TipoConta.cs",
+              "RelativeDocumentMoniker": "BancoLab\\TipoConta.cs",
+              "ToolTip": "C:\\Users\\labsfiap\\Desktop\\csharp\\20260818\\BancoLab\\BancoLab\\TipoConta.cs",
+              "RelativeToolTip": "BancoLab\\TipoConta.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-19T00:59:48.193Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
