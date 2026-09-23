@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aula 4 — Primeira API REST com banco de dados</title>
+<style>
+:root {
+  --bg: #0a0a0f;
+  --fg: #f5f5f7;
+  --accent: #ED0973;
+  --accent-light: #ff5aa8;
+  --accent-dark: #B00757;
+  --muted: #a1a1aa;
+  --code-bg: #1a1a24;
+  --border: #2d2d3a;
+  --card: #14141c;
+}
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: "Segoe UI", -apple-system, Roboto, sans-serif;
+}
+.deck { position: relative; width: 100vw; height: 100vh; }
+.slide {
+  position: absolute;
+  inset: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5rem 6rem 4rem;
+  animation: fade .3s ease-out;
+}
+.slide.active { display: flex; }
+@keyframes fade {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+.logo {
+  position: fixed;
+  top: 1.2rem;
+  left: 1.8rem;
+  color: var(--accent);
+  font-weight: 900;
+  font-size: 1.6rem;
+  letter-spacing: .05em;
+  z-index: 10;
+}
+.logo::before {
+  content: "";
+  display: inline-block;
+  width: 6px;
+  height: 26px;
+  margin-right: .4rem;
+  vertical-align: middle;
+  background: var(--accent);
+  border-radius: 2px;
+}
+.accent-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+  z-index: 10;
+}
+.credit {
+  position: fixed;
+  bottom: 1.4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--muted);
+  font-size: .8rem;
+  z-index: 10;
+}
+h1 {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: 3.5rem;
+  line-height: 1.05;
+}
+h2 {
+  display: inline-block;
+  margin: 0 0 1.8rem;
+  padding-bottom: .6rem;
+  border-bottom: 3px solid var(--accent);
+  font-size: 2.4rem;
+}
+h3 {
+  margin: .8rem 0 .5rem;
+  color: var(--accent);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+}
+p, li { font-size: 1.35rem; line-height: 1.5; }
+code {
+  padding: 2px 7px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--code-bg);
+  color: var(--accent-light);
+  font-family: Consolas, monospace;
+}
+pre {
+  padding: 1.3rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  max-width: 100%;
+  -webkit-overflow-scrolling: touch;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  background: var(--code-bg);
+  font-size: 1.1rem;
+  line-height: 1.45;
+}
+pre code { padding: 0; border: 0; color: var(--fg); }
+.block-caption { margin: .5rem 0 0; color: var(--muted); font-size: 1rem; }
+.center { text-align: center; }
+.subtitle { margin: 0; color: var(--muted); font-size: 1.55rem; }
+.block-list { list-style: none; padding-left: 0; }
+.block-list li { position: relative; margin: .7rem 0; padding-left: 2rem; }
+.block-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .55rem;
+  width: 11px;
+  height: 11px;
+  background: var(--accent);
+  transform: rotate(45deg);
+}
+ol.block-list li::before { content: none; }
+ol.block-list { counter-reset: item; padding-left: 0; }
+ol.block-list li {
+  padding-left: 2.2rem;
+  counter-increment: item;
+}
+ol.block-list li::before {
+  content: counter(item) ".";
+  width: auto;
+  height: auto;
+  background: none;
+  transform: none;
+  color: var(--accent);
+  font-weight: 700;
+  top: 0;
+}
+.cards-grid {
+  display: grid;
+  gap: 1rem;
+}
+.cards-cols-2 { grid-template-columns: repeat(2, 1fr); }
+.cards-cols-3 { grid-template-columns: repeat(3, 1fr); }
+.card {
+  padding: 1.2rem;
+  border-top: 3px solid var(--accent);
+  border-radius: 8px;
+  background: var(--card);
+}
+.card strong {
+  display: block;
+  margin-bottom: .45rem;
+  color: var(--accent-light);
+  font-family: Consolas, monospace;
+  font-size: 1.35rem;
+}
+.card p { margin: 0; color: var(--muted); font-size: 1rem; }
+.card .block-paragraph { margin: 0 0 .5rem; }
+.callout {
+  margin: 1rem 0;
+  padding: 1rem 1.4rem;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  background: rgba(237, 9, 115, .1);
+  font-size: 1.2rem;
+}
+.callout-priority { border-left-color: var(--accent-light); }
+.block-table { width: 100%; border-collapse: collapse; font-size: 1.15rem; }
+.block-table th, .block-table td { padding: .7rem; border: 1px solid var(--border); text-align: left; }
+.block-table th { background: var(--accent); }
+.http-flow-diagram {
+  display: grid;
+  grid-template-columns: minmax(150px, .8fr) minmax(420px, 2.4fr) minmax(150px, .8fr);
+  gap: 1.6rem;
+  align-items: center;
+  width: 100%;
+}
+.http-peer {
+  display: flex;
+  min-height: 150px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1.4rem;
+  border: 2px solid var(--border);
+  border-radius: 14px;
+  background: var(--card);
+  text-align: center;
+}
+.http-peer span {
+  color: var(--muted);
+  font-size: .8rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+.http-peer strong {
+  margin-top: .5rem;
+  color: var(--accent-light);
+  font-size: 1.5rem;
+}
+.http-exchange {
+  display: grid;
+  gap: 1.2rem;
+}
+.http-message {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.http-message-copy {
+  display: grid;
+  min-width: 155px;
+  gap: .45rem;
+}
+.http-message-copy strong { font-size: 1rem; }
+.http-message-copy code {
+  width: fit-content;
+  font-size: .9rem;
+}
+.http-track {
+  position: relative;
+  height: 4px;
+  flex: 1;
+  background: var(--border);
+}
+.http-track::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  border-top: 3px solid var(--accent);
+  border-right: 3px solid var(--accent);
+  transform: translateY(-50%) rotate(45deg);
+}
+.http-response .http-track::after {
+  right: auto;
+  left: -1px;
+  transform: translateY(-50%) rotate(-135deg);
+}
+.http-packet {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--bg);
+  border-radius: 50%;
+  background: var(--accent-light);
+  box-shadow: 0 0 18px rgba(255, 90, 168, .8);
+  opacity: 0;
+  transform: translateY(-50%);
+}
+.slide.active .http-request .http-packet {
+  animation: http-request-travel 6s ease-in-out infinite;
+}
+.slide.active .http-response .http-packet {
+  animation: http-response-travel 6s ease-in-out infinite;
+}
+.http-processing {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .5rem;
+  padding: .75rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: rgba(237, 9, 115, .08);
+  color: var(--muted);
+}
+.http-processing span { color: var(--accent); font-weight: 800; }
+.slide.active .http-processing {
+  animation: http-processing-pulse 6s ease-in-out infinite;
+}
+.http-flow-caption {
+  margin: 2rem 0 0;
+  color: var(--muted);
+  text-align: center;
+  font-size: 1rem;
+}
+@keyframes http-request-travel {
+  0%, 5% { left: 0; opacity: 0; }
+  10% { opacity: 1; }
+  30% { left: calc(100% - 18px); opacity: 1; }
+  34%, 100% { left: calc(100% - 18px); opacity: 0; }
+}
+@keyframes http-processing-pulse {
+  0%, 32%, 58%, 100% {
+    border-color: var(--border);
+    box-shadow: none;
+    color: var(--muted);
+  }
+  39%, 51% {
+    border-color: var(--accent);
+    box-shadow: 0 0 22px rgba(237, 9, 115, .28);
+    color: var(--fg);
+  }
+}
+@keyframes http-response-travel {
+  0%, 56% { left: calc(100% - 18px); opacity: 0; }
+  62% { opacity: 1; }
+  82% { left: 0; opacity: 1; }
+  86%, 100% { left: 0; opacity: 0; }
+}
+.nav {
+  position: fixed;
+  right: 1.8rem;
+  bottom: 1.2rem;
+  padding: .4rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--card);
+  color: var(--muted);
+  z-index: 10;
+}
+.hint {
+  position: fixed;
+  left: 3rem;
+  bottom: 1.2rem;
+  color: var(--muted);
+  font-size: .8rem;
+  z-index: 10;
+}
+@media (max-width: 900px) {
+  .slide { padding: 4.5rem 2rem 3.5rem; }
+  h1 { font-size: 2.7rem; }
+  h2 { font-size: 2rem; }
+  p, li { font-size: 1.05rem; }
+  .cards-cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .cards-cols-2 { grid-template-columns: 1fr; }
+  pre { font-size: .9rem; }
+  .http-flow-diagram {
+    grid-template-columns: 120px minmax(280px, 1fr) 120px;
+    gap: .8rem;
+  }
+  .http-peer { min-height: 120px; padding: .8rem; }
+  .http-peer strong { font-size: 1.1rem; }
+  .http-message-copy { min-width: 120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .slide.active .http-request .http-packet,
+  .slide.active .http-response .http-packet,
+  .slide.active .http-processing {
+    animation: none;
+  }
+  .http-request .http-packet { left: calc(100% - 18px); opacity: 1; }
+  .http-response .http-packet { left: 0; opacity: 1; }
+}
+
+</style>
+</head>
+<body>
+<div class="logo">FIAP</div>
+<div class="accent-bar"></div>
+<div class="credit">Professor Rafael Cassiolato</div>
+
+<div class="deck">
+  <section class="slide active center">
+    <h1>Da requisição ao banco de dados</h1>
+<p class="subtitle">Criando uma API REST do zero com persistência local</p><p style="margin-top: 3rem; color: var(--muted);">ASP.NET Core · Entity Framework Core · SQL Server LocalDB · Insomnia</p>  </section>
+
+  <section class="slide">
+    <h2>CRUD exposto por HTTP</h2>
+    <table class="block-table"><thead><tr><th>Operação</th><th>Método</th><th>Rota</th><th>Resposta comum</th></tr></thead><tbody><tr><td>Create</td><td>POST</td><td><code>/api/produtos</code></td><td><code>201 Created</code></td></tr><tr><td>Read</td><td>GET</td><td><code>/api/produtos</code></td><td><code>200 OK</code></td></tr><tr><td>Update parcial</td><td>PATCH</td><td><code>/api/produtos/1</code></td><td><code>200 OK</code></td></tr><tr><td>Delete lógico</td><td>DELETE</td><td><code>/api/produtos/1</code></td><td><code>204 No Content</code></td></tr></tbody></table>
+  </section>
+
+  <section class="slide">
+    <h2>Excluir não precisa apagar</h2>
+    <div class="cards-grid cards-cols-2">
+      <div class="card"><strong>Exclusão física</strong><pre class="block-code"><code>db.Produtos.Remove(produto);
+</code></pre><p class="block-paragraph">O registro deixa de existir no banco e seu histórico pode ser perdido.</p></div>
+      <div class="card"><strong>Exclusão lógica</strong><pre class="block-code"><code>produto.Ativo = false;
+</code></pre><p class="block-paragraph">O registro permanece armazenado, mas deixa de aparecer nas consultas normais.</p></div>
+    </div>
+    <div class="callout callout-priority">Nesta aula, <code>DELETE</code> representa uma ação de negócio: desativar o recurso.</div>
+  </section>
+
+  <section class="slide">
+    <h2>Code-first em três movimentos</h2>
+    <div class="cards-grid cards-cols-3"><div class="card"><strong>Modelo</strong><p class="block-paragraph">Criamos as classes C# que representam entidades e relacionamentos.</p></div><div class="card"><strong>Migração</strong><p class="block-paragraph">O Entity Framework Core compara o modelo e gera a alteração do banco.</p></div><div class="card"><strong>Banco</strong><p class="block-paragraph">Aplicamos a migração no SQL Server LocalDB e consultamos os dados.</p></div></div>
+
+  </section>
+
+  <section class="slide">
+    <h2>Nossa primeira entidade</h2>
+    <pre class="block-code"><code>public sealed class Produto
+{
+    public int Id { get; set; }
+    public string Nome { get; set; } = string.Empty;
+    public decimal Preco { get; set; }
+    public int Estoque { get; set; }
+    public bool Ativo { get; set; } = true;
+}
+</code></pre>
+<p class="block-caption">A propriedade <code>Id</code> vira a chave primária por convenção.</p>  </section>
+
+  <section class="slide center">
+    <h2 style="display: block; margin: 0 auto 2rem;">Demonstração ao vivo</h2>
+<h3 style="font-size: 2rem; text-transform: none;">Projeto → banco → migração → POST e GET → Insomnia</h3>    <div style="max-width: 760px; margin: 1rem auto 0; text-align: left;">
+      <ol class="block-list"><li>Criar o projeto ASP.NET Core Web API no Visual Studio.</li><li>Instalar e configurar o Entity Framework Core.</li><li>Criar <code>Produto</code> e <code>AppDbContext</code>.</li><li>Gerar e aplicar a primeira migração.</li><li>Criar e testar POST e GET.</li></ol>
+    </div>
+  </section>
+
+  <section class="slide">
+    <h2>Atividade: Pedido possui muitos itens</h2>
+    <div class="cards-grid cards-cols-2">
+      <div class="card"><strong>Pedido — principal</strong><ul class="block-list"><li><code>Id</code></li><li><code>Cliente</code></li><li><code>Status</code></li><li><code>Total</code></li><li><code>CriadoEm</code> e <code>Ativo</code></li><li><code>Itens</code></li></ul></div>
+      <div class="card"><strong>ItemPedido — dependente</strong><ul class="block-list"><li><code>Id</code></li><li><code>PedidoId</code></li><li><code>Produto</code></li><li><code>Quantidade</code></li><li><code>ValorUnitario</code></li><li><code>Pedido</code></li></ul></div>
+    </div>
+    <div class="callout callout-priority">Relacionamento 1:N: um pedido pode possuir muitos itens; cada item pertence a um pedido.</div>
+  </section>
+
+  <section class="slide">
+    <h2>Laboratório — Pedidos e itens</h2>
+    <p class="block-paragraph">Continue o projeto da demonstração e implemente os tickets em ordem.</p><ul class="block-list"><li>Criar duas tabelas relacionadas com code-first.</li><li>Implementar endpoints e exclusão lógica.</li><li>Encapsular a regra de fechamento em um serviço.</li><li>Importar uma lista de pedidos por JSON.</li><li>Produzir um resumo agrupado por status.</li></ul>
+  </section>
+
+</div>
+
+<div class="nav"><span id="cur">1</span> / <span id="tot">8</span></div>
+<div class="hint">Use as setas do teclado ou clique para navegar</div>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+const current = document.getElementById("cur");
+const total = document.getElementById("tot");
+let index = 0;
+
+total.textContent = slides.length;
+
+function show(nextIndex) {
+  index = Math.max(0, Math.min(slides.length - 1, nextIndex));
+  slides.forEach((slide, slideIndex) => {
+    slide.classList.toggle("active", slideIndex === index);
+  });
+  current.textContent = index + 1;
+}
+
+document.addEventListener("keydown", event => {
+  if (["ArrowRight", " ", "PageDown"].includes(event.key)) show(index + 1);
+  if (["ArrowLeft", "PageUp"].includes(event.key)) show(index - 1);
+  if (event.key === "Home") show(0);
+  if (event.key === "End") show(slides.length - 1);
+});
+
+document.addEventListener("click", event => {
+  if (event.target.closest("a, button, input, textarea, select")) return;
+  show(event.clientX > window.innerWidth / 2 ? index + 1 : index - 1);
+});
+
+show(0);
+
+</script>
+</body>
+</html>

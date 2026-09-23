@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>Aula 4 — Primeira API REST com banco de dados</title>
+<style>
+:root {
+  --bg: #08080d;
+  --card: #14141d;
+  --card-2: #1b1b27;
+  --fg: #f5f5f7;
+  --muted: #aaaab6;
+  --accent: #ed0973;
+  --accent-2: #ff65ae;
+  --border: #30303e;
+  --warning: #facc15;
+  --danger: #fb7185;
+  --success: #4ade80;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--fg);
+  background: var(--bg);
+  font: 17px/1.65 "Segoe UI", system-ui, sans-serif;
+}
+.progress { position: fixed; inset: 0 0 auto; height: 4px; z-index: 100; }
+.progress span { display: block; width: 0; height: 100%; background: var(--accent); }
+.topbar {
+  position: sticky; top: 0; z-index: 90;
+  padding: .8rem max(1rem, calc((100vw - 1180px) / 2));
+  background: rgba(8, 8, 13, .94); border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(10px);
+}
+.brand { color: var(--accent); font-weight: 900; text-decoration: none; letter-spacing: .06em; }
+.brand span { color: var(--fg); font-weight: 600; }
+.page { max-width: 1180px; margin: auto; padding: 0 1.2rem; }
+.hero {
+  padding: 5rem 0 3rem;
+  border-bottom: 3px solid var(--accent);
+  background: radial-gradient(circle at 80% 20%, rgba(237, 9, 115, .18), transparent 35%);
+}
+.eyebrow { color: var(--accent-2); font-weight: 800; text-transform: uppercase; letter-spacing: .1em; }
+h1 { max-width: 850px; margin: .2rem 0 1rem; font-size: clamp(2.5rem, 7vw, 5rem); line-height: 1; }
+.lead { max-width: 800px; color: var(--muted); font-size: 1.2rem; }
+.pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.5rem; }
+.pills span { padding: .3rem .75rem; border: 1px solid var(--border); border-radius: 999px; color: var(--accent-2); }
+.layout { display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 3rem; padding: 3rem 0 5rem; }
+.layout > *, main, .toc { min-width: 0; }
+.toc { position: sticky; top: 4.5rem; align-self: start; display: grid; gap: .4rem; max-height: calc(100vh - 6rem); overflow: auto; }
+.toc strong { color: var(--accent); margin-bottom: .5rem; }
+.toc a { color: var(--muted); text-decoration: none; padding: .25rem 0; overflow-wrap: anywhere; }
+.toc a:hover { color: var(--fg); }
+.chapter { margin-bottom: 4.5rem; scroll-margin-top: 5rem; }
+h2 { margin: 0 0 1.4rem; color: var(--accent-2); font-size: clamp(1.7rem, 4vw, 2.6rem); line-height: 1.15; }
+.block-paragraph, .block-list, .block-quote, .block-table, .block-code, .callout, .cards-grid { margin: 1rem 0 1.4rem; }
+.block-code {
+  max-width: 100%; overflow: auto; padding: 1.1rem; border: 1px solid var(--border);
+  border-radius: 10px; background: #0d0d14; color: #f8d4e6;
+}
+.block-caption { color: var(--muted); font-size: .92rem; margin-top: -.8rem; }
+.block-table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
+.block-table th, .block-table td { padding: .7rem .8rem; border: 1px solid var(--border); text-align: left; }
+.block-table th { background: rgba(237, 9, 115, .16); color: var(--accent-2); }
+.block-quote { padding: 1rem 1.3rem; border-left: 4px solid var(--accent); background: var(--card); }
+.callout { padding: 1rem 1.2rem; border: 1px solid var(--border); border-left: 5px solid var(--accent); border-radius: 8px; background: var(--card); }
+.callout-priority, .callout-warning { border-left-color: var(--warning); }
+.callout-danger { border-left-color: var(--danger); }
+.callout-success { border-left-color: var(--success); }
+.cards-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.cards-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.card { min-width: 0; padding: 1.1rem; border: 1px solid var(--border); border-radius: 10px; background: var(--card); }
+.card strong { display: block; color: var(--accent-2); margin-bottom: .45rem; }
+.card .block-paragraph, .card .block-list { margin-bottom: 0; }
+a { color: var(--accent-2); }
+.page-nav { display: flex; justify-content: space-between; gap: 1rem; margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
+.page-nav a { text-decoration: none; font-weight: 700; }
+footer { padding: 1.5rem; border-top: 1px solid var(--border); color: var(--muted); text-align: center; }
+@media (max-width: 800px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .toc { position: static; max-height: none; padding-bottom: 1rem; border-bottom: 1px solid var(--border); }
+  .cards-grid, .cards-cols-2 { grid-template-columns: 1fr; }
+}
+@media print {
+  .progress, .topbar, .toc, .page-nav { display: none; }
+  body { color: #111; background: #fff; font-size: 11pt; }
+  .page { max-width: none; }
+  .layout { display: block; padding-top: 1rem; }
+  .hero { padding: 1rem 0; background: none; }
+  .chapter { break-inside: avoid; margin-bottom: 2rem; }
+  .block-code, .card, .callout, .block-quote { color: #111; background: #fff; border-color: #999; }
+}
+
+</style>
+</head>
+<body>
+<div class="progress" aria-hidden="true"><span id="reading-progress"></span></div>
+<header class="topbar">
+  <a class="brand" href="#top">FIAP <span>C# Software Development</span></a>
+</header>
+
+<div class="page" id="top">
+  <header class="hero">
+<p class="eyebrow">Aula 4</p>    <h1>Aula 4 — Primeira API REST com banco de dados</h1>
+<p class="lead">Referência rápida para criar uma API REST com ASP.NET Core, Entity Framework Core, SQL Server LocalDB e migrações code-first.</p>    <div class="pills"><span>ASP.NET Core</span><span>REST</span><span>EF Core</span><span>LocalDB</span><span>Code-first</span><span>Insomnia</span></div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="Neste material">
+      <strong>Neste material</strong>
+<a href="#handout-mapa">Mapa da aplicação</a><a href="#handout-criacao">Criar e configurar o projeto</a><a href="#handout-contexto">Contexto e migração</a><a href="#handout-status">Métodos e respostas</a><a href="#handout-patch">DTOs de entrada e saída</a><a href="#handout-service">Controller e Service</a><a href="#handout-delete">Atualização e exclusão lógica no serviço</a><a href="#handout-relacionamento">Pedido e ItemPedido</a><a href="#handout-operacoes">Rotas da API</a><a href="#handout-referencias">Referências</a><a href="#handout-diagnostico">Diagnóstico rápido</a>    </nav>
+
+    <main>
+      <section class="chapter" id="handout-mapa">
+        <h2>Mapa da aplicação</h2>
+        <pre class="block-code"><code>Insomnia
+    ↓ HTTP + JSON
+Controller
+    ↓ DTO
+Serviço
+    ↓ regra + entidades
+AppDbContext
+    ↓ SQL
+SQL Server LocalDB
+</code></pre><div class="callout callout-priority">O controller cuida do protocolo HTTP. O serviço concentra regras de negócio, mapeamentos e chamadas ao banco. Data Transfer Objects (DTOs) representam o contrato; entidades representam a persistência.</div>
+      </section>
+      <section class="chapter" id="handout-criacao">
+        <h2>Criar e configurar o projeto</h2>
+        <ol class="block-list"><li>Criar <code>Loja.Api</code> com o template ASP.NET Core Web API e controllers.</li><li>Instalar <code>Microsoft.EntityFrameworkCore.SqlServer</code>.</li><li>Instalar <code>Microsoft.EntityFrameworkCore.Tools</code>.</li><li>Adicionar a connection string.</li><li>Criar e registrar <code>AppDbContext</code>.</li></ol><pre class="block-code"><code>{
+  &quot;ConnectionStrings&quot;: {
+    &quot;DefaultConnection&quot;: &quot;Server=(localdb)\\MSSQLLocalDB;Database=LojaAula04Db;Trusted_Connection=True;TrustServerCertificate=True&quot;
+  }
+}
+</code></pre>
+      </section>
+      <section class="chapter" id="handout-contexto">
+        <h2>Contexto e migração</h2>
+        <pre class="block-code"><code>public sealed class AppDbContext(
+    DbContextOptions&lt;AppDbContext&gt; options)
+    : DbContext(options)
+{
+    public DbSet&lt;Produto&gt; Produtos =&gt; Set&lt;Produto&gt;();
+    public DbSet&lt;Pedido&gt; Pedidos =&gt; Set&lt;Pedido&gt;();
+    public DbSet&lt;ItemPedido&gt; ItensPedido =&gt;
+        Set&lt;ItemPedido&gt;();
+}
+</code></pre><pre class="block-code"><code>Add-Migration CriarProdutos
+Update-Database
+Add-Migration AdicionarPedidos
+Update-Database
+</code></pre>
+      </section>
+      <section class="chapter" id="handout-status">
+        <h2>Métodos e respostas</h2>
+        <table class="block-table"><thead><tr><th>Situação</th><th>Resposta</th></tr></thead><tbody><tr><td>Recurso criado</td><td><code>201 Created</code></td></tr><tr><td>Consulta realizada</td><td><code>200 OK</code></td></tr><tr><td>Operação sem corpo de resposta</td><td><code>204 No Content</code></td></tr><tr><td>Entrada inválida</td><td><code>400 Bad Request</code></td></tr><tr><td>Recurso inexistente ou inativo</td><td><code>404 Not Found</code></td></tr><tr><td>Estado impede a operação</td><td><code>409 Conflict</code></td></tr></tbody></table>
+      </section>
+      <section class="chapter" id="handout-patch">
+        <h2>DTOs de entrada e saída</h2>
+        <pre class="block-code"><code>public sealed class CriarItemPedidoRequest
+{
+    public string Produto { get; set; } = string.Empty;
+    public int Quantidade { get; set; }
+    public decimal ValorUnitario { get; set; }
+}
+</code></pre><pre class="block-code"><code>public sealed class CriarPedidoRequest
+{
+    public string Cliente { get; set; } = string.Empty;
+    public List&lt;CriarItemPedidoRequest&gt; Itens { get; set; } = [];
+}
+</code></pre><pre class="block-code"><code>public sealed class AtualizarPedidoRequest
+{
+    public string? Cliente { get; set; }
+}
+</code></pre><pre class="block-code"><code>public sealed class PedidoResponse
+{
+    public int Id { get; set; }
+    public string Cliente { get; set; } = string.Empty;
+    public StatusPedido Status { get; set; }
+    public decimal Total { get; set; }
+    public List&lt;ItemPedidoResponse&gt; Itens { get; set; } = [];
+}
+</code></pre><div class="callout callout-warning">Requests e responses são classes do contrato HTTP. No PATCH, propriedades anuláveis permitem distinguir campo ausente de valor informado.</div>
+      </section>
+      <section class="chapter" id="handout-service">
+        <h2>Controller e Service</h2>
+        <pre class="block-code"><code>[ApiController]
+[Route(&quot;api/[controller]&quot;)]
+public sealed class PedidosController(
+    IPedidoService service) : ControllerBase
+{
+    [HttpGet(&quot;{id:int}&quot;)]
+    public async Task&lt;ActionResult&lt;PedidoResponse&gt;&gt; Obter(
+        int id)
+    {
+        var pedido = await service.ObterAsync(id);
+        return pedido is null ? NotFound() : Ok(pedido);
+    }
+}
+</code></pre><pre class="block-code"><code>public sealed class PedidoService(AppDbContext db)
+    : IPedidoService
+{
+    public async Task&lt;PedidoResponse?&gt; ObterAsync(int id)
+    {
+        var pedido = await db.Pedidos
+            .Include(item =&gt; item.Itens)
+            .FirstOrDefaultAsync(item =&gt;
+                item.Id == id &amp;&amp; item.Ativo);
+
+        return pedido is null ? null : Mapear(pedido);
+    }
+}
+</code></pre><div class="callout callout-priority">Controllers não consultam o <code>AppDbContext</code>. Todas as consultas, persistências, validações e regras ficam no serviço.</div>
+      </section>
+      <section class="chapter" id="handout-delete">
+        <h2>Atualização e exclusão lógica no serviço</h2>
+        <pre class="block-code"><code>if (request.Cliente is not null)
+{
+    pedido.Cliente = request.Cliente;
+}
+
+await db.SaveChangesAsync();
+</code></pre><pre class="block-code"><code>pedido.Ativo = false;
+await db.SaveChangesAsync();
+</code></pre><p class="block-paragraph">As consultas normais filtram somente registros ativos. O controller recebe o resultado do serviço e escolhe a resposta HTTP adequada.</p>
+      </section>
+      <section class="chapter" id="handout-relacionamento">
+        <h2>Pedido e ItemPedido</h2>
+        <pre class="block-code"><code>public enum StatusPedido
+{
+    Aberto,
+    Fechado,
+    Cancelado
+}
+</code></pre><pre class="block-code"><code>public sealed class Pedido
+{
+    public int Id { get; set; }
+    public string Cliente { get; set; } = string.Empty;
+    public StatusPedido Status { get; set; } =
+        StatusPedido.Aberto;
+    public decimal Total { get; set; }
+    public DateTime CriadoEm { get; set; } =
+        DateTime.UtcNow;
+    public bool Ativo { get; set; } = true;
+    public List&lt;ItemPedido&gt; Itens { get; set; } = [];
+}
+</code></pre><pre class="block-code"><code>public sealed class ItemPedido
+{
+    public int Id { get; set; }
+    public int PedidoId { get; set; }
+    public string Produto { get; set; } = string.Empty;
+    public int Quantidade { get; set; }
+    public decimal ValorUnitario { get; set; }
+    public Pedido Pedido { get; set; } = null!;
+}
+</code></pre>
+      </section>
+      <section class="chapter" id="handout-operacoes">
+        <h2>Rotas da API</h2>
+        <table class="block-table"><thead><tr><th>Rota</th><th>Responsabilidade</th></tr></thead><tbody><tr><td><code>POST /api/pedidos</code></td><td>Criar um pedido.</td></tr><tr><td><code>GET /api/pedidos</code></td><td>Listar pedidos ativos.</td></tr><tr><td><code>GET /api/pedidos/{id}</code></td><td>Consultar um pedido.</td></tr><tr><td><code>PATCH /api/pedidos/{id}</code></td><td>Atualizar parcialmente um pedido.</td></tr><tr><td><code>DELETE /api/pedidos/{id}</code></td><td>Desativar um pedido.</td></tr><tr><td><code>POST /api/pedidos/{id}/fechar</code></td><td>Validar estado, calcular total e fechar.</td></tr><tr><td><code>POST /api/pedidos/importacao</code></td><td>Validar e criar uma lista em lote.</td></tr><tr><td><code>GET /api/pedidos/resumo</code></td><td>Agrupar por status e calcular indicadores.</td></tr></tbody></table><div class="callout callout-priority">CRUD usa rotas simples. Sub-rotas são reservadas para operações de negócio que não representam apenas criar, ler, atualizar ou desativar.</div>
+      </section>
+      <section class="chapter" id="handout-referencias">
+        <h2>Referências</h2>
+        <ul class="block-list"><li><a href="https://learn.microsoft.com/aspnet/core/mvc/overview">Visão geral do ASP.NET Core MVC</a></li><li><a href="https://learn.microsoft.com/aspnet/core/web-api/">Criar APIs Web com controllers</a></li><li><a href="https://learn.microsoft.com/aspnet/core/mvc/controllers/routing">Roteamento para ações de controller</a></li><li><a href="https://learn.microsoft.com/aspnet/core/mvc/models/model-binding">Associação e validação de modelos</a></li><li><a href="https://learn.microsoft.com/aspnet/core/fundamentals/dependency-injection">Injeção de dependência no ASP.NET Core</a></li><li><a href="https://learn.microsoft.com/ef/core/">Entity Framework Core</a></li><li><a href="https://learn.microsoft.com/ef/core/managing-schemas/migrations/">Migrações no Entity Framework Core</a></li><li><a href="https://learn.microsoft.com/ef/core/modeling/relationships">Relacionamentos no Entity Framework Core</a></li><li><a href="https://learn.microsoft.com/sql/database-engine/configure-windows/sql-server-express-localdb">SQL Server Express LocalDB</a></li></ul>
+      </section>
+      <section class="chapter" id="handout-diagnostico">
+        <h2>Diagnóstico rápido</h2>
+        <table class="block-table"><thead><tr><th>Sintoma</th><th>Verificação</th></tr></thead><tbody><tr><td>Banco não aparece</td><td>Executar <code>Update-Database</code> e atualizar o Object Explorer.</td></tr><tr><td>Erro ao criar contexto</td><td>Conferir registro do <code>AddDbContext</code> e connection string.</td></tr><tr><td>Tabela não possui nova coluna</td><td>Criar e aplicar uma nova migração.</td></tr><tr><td>JSON entra vazio</td><td>Conferir nomes e tipos do DTO recebido.</td></tr><tr><td>Ciclo ao serializar</td><td>Retornar DTOs, não o grafo completo de entidades.</td></tr><tr><td>DELETE removeu a linha</td><td>Substituir <code>Remove</code> pela alteração de <code>Ativo</code>.</td></tr></tbody></table>
+      </section>
+
+    </main>
+  </div>
+</div>
+
+<footer>Professor Rafael Cassiolato</footer>
+<script>
+function updateReadingProgress() {
+  const root = document.documentElement;
+  const scrollable = root.scrollHeight - root.clientHeight;
+  const percent = scrollable > 0 ? (root.scrollTop / scrollable) * 100 : 0;
+  document.getElementById("reading-progress").style.width = `${percent}%`;
+}
+document.addEventListener("scroll", updateReadingProgress, { passive: true });
+updateReadingProgress();
+
+</script>
+</body>
+</html>
